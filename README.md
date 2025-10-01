@@ -52,6 +52,7 @@ It provides secure authentication, blog management, project management, and serv
 ---
 
 ## 📂 Project Structure
+```bash
 backend/
 ├─ src/
 │ ├─ config/ # Database config, env config
@@ -69,6 +70,7 @@ backend/
 ├─ prisma/
 │ └─ schema.prisma # Prisma schema
 └─ package.json
+```
 
 ---
 
