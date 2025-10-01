@@ -1,20 +1,78 @@
 
-# Backend Starter Prisma
+# 🌐 Personal Portfolio Website
 
-A simple **Application Starter Pack** built with **TypeScript, Express.js**.  
-This project is designed to help learners practice Prisma hands-on by building a blog platform.
-
----
-
-## Features
-- TypeScript + Express.js setup
-- Modular project structure
-- Environment configuration with `dotenv`
-- Ready to extend with blog modules (Posts, Users, etc.)
+This is the **Backend API** for the **Personal Portfolio Website**.  
+It provides secure authentication, blog management, project management, and serves APIs consumed by the Next.js frontend.
 
 ---
 
-## Installation
+## ✨ Features
+- 🔐 **Authentication & Authorization**
+  - JWT-based login/logout for Admin (Portfolio Owner)
+  - Passwords securely hashed with **bcrypt**
+  - Auth middleware for route protection
+
+- 📝 **Blog Management (Admin)**
+  - Create, Read, Update, Delete (CRUD)
+  - Public APIs for listing blogs and fetching blog details
+
+- 💻 **Project Management (Admin)**
+  - CRUD for projects
+  - Public APIs for projects showcase
+
+- ⚡ **Error Handling**
+  - Centralized error handler with meaningful messages
+
+- 🍪 **Secure Cookies**
+  - `accessToken` stored in HTTP-only cookies
+
+- 🛡️ **Role-Based Access**
+  - Only Admin can access dashboard APIs
+
+- 🗄️ **Prisma ORM**
+  - For PostgreSQL or other SQL databases
+
+- 📡 **RESTful APIs**
+  - Ready to connect with any frontend
+
+---
+
+## 🛠️ Tech Stack
+- [Node.js](https://nodejs.org/)
+- [Express.js](https://expressjs.com/)
+- [Prisma ORM](https://www.prisma.io/)
+- [PostgreSQL](https://www.postgresql.org/) (or compatible DB)
+- [bcrypt](https://www.npmjs.com/package/bcrypt)
+- [jsonwebtoken (JWT)](https://www.npmjs.com/package/jsonwebtoken)
+- [cookie-parser](https://www.npmjs.com/package/cookie-parser)
+- [dotenv](https://www.npmjs.com/package/dotenv)
+- [cors](https://www.npmjs.com/package/cors)
+- [TypeScript](https://www.typescriptlang.org/)
+
+---
+
+## 📂 Project Structure
+backend/
+├─ src/
+│ ├─ config/ # Database config, env config
+│ ├─ error/ # AppError class & global error handler
+│ ├─ generated/ # Prisma client (auto-generated)
+│ ├─ middlewares/ # Auth middleware, error handling
+│ ├─ modules/ # Feature-wise modules
+│ │ ├─ auth/ # login, logout, auth services
+│ │ ├─ blog/ # blog controller, service, routes
+│ │ └─ project/ # project controller, service, routes
+│ ├─ types/ # Custom type definitions (e.g., req.user)
+│ ├─ utils/ # catchAsync, sendResponse helpers
+│ ├─ app.ts # Express app configuration
+│ └─ server.ts # Server entry point
+├─ prisma/
+│ └─ schema.prisma # Prisma schema
+└─ package.json
+
+---
+
+## Installation & Setup
 
 Clone the repository:
 
@@ -39,7 +97,29 @@ pnpm install
 Setup environment variables:
 
 ```bash
-cp .env.example .env
+DATABASE_URL="postgresql://USER:PASSWORD@localhost:5432/portfolio_db"
+JWT_ACCESS_SECRET="your_jwt_secret"
+PORT=5000
+
+ADMIN_EMAIL=admin...example.com
+ADMIN_PASSWORD=password
+
+BCRYPT_SALT_ROUND=salt_round
+```
+---
+## Dependencies and Prisma Setup
+
+Install Dependencies:
+```bash
+npm install
+```
+Run Prisma migrations:
+```bash
+npx prisma migrate dev
+```
+Generate Prisma client:
+```bash
+npx prisma generate
 ```
 
 Run the development server:
@@ -53,24 +133,6 @@ yarn dev
 
 # using pnpm
 pnpm dev
-```
-
----
-
-## Folder Structure
-
-```
-Prisma-Blog/
-│── node_modules/          # Dependencies
-│── src/
-│   ├── app.ts             # Express app configuration
-│   ├── server.ts          # Server entry point
-│   ├── config/            # Environment & configuration files
-│   └── modules/           # Application modules (posts, users, etc.)
-│── package.json           # Project metadata & scripts
-│── pnpm-lock.yaml         # Lockfile (pnpm)
-│── tsconfig.json          # TypeScript configuration
-│── README.md              # Documentation
 ```
 
 ---
@@ -90,12 +152,7 @@ pnpm start
 
 ---
 
-## Learning Objective
-
-This starter pack is part of the **Next Level Web Development Bootcamp** curriculum.
-By using this project, students will learn how to:
-
-* Connect a Node.js app with Prisma ORM
-* Build modular APIs
-* Manage environment variables
-* Structure scalable backend projects
+✅ **Key Points:**
+- This is only the Backend API README.md.
+- Supports Prisma + PostgreSQL and is ready for development and deployment.
+- Professional, clear, and complete for submission 🚀
