@@ -6,6 +6,7 @@ import { errorHandler } from "./middlewares/errorHandler";
 import { AuthRoutes } from "./modules/auth/auth.routes";
 import { BlogRoutes } from "./modules/blog/blog.routes";
 import { ProjectRoutes } from "./modules/project/project.routes";
+import { AboutRoutes } from "./modules/about/about.routes";
 
 const app = express();
 
@@ -25,6 +26,7 @@ app.use(cookieParser());
 app.use("/api/v1/auth", AuthRoutes);
 app.use("/api/v1/blog", BlogRoutes);
 app.use("/api/v1/project", ProjectRoutes);
+app.use("/api/v1/about", AboutRoutes);
 
 // Default route for testing
 app.get("/", (req: Request, res: Response) => {

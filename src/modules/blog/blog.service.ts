@@ -91,6 +91,7 @@ const createBlog = async (payload: Prisma.BlogCreateInput): Promise<Blog> => {
 
     return result
 }
+
 const updateBlog = async (id: number, payload: Partial<Blog>) => {
     const result = await prisma.blog.update({
         where: { id },
@@ -98,6 +99,7 @@ const updateBlog = async (id: number, payload: Partial<Blog>) => {
     })
     return result
 }
+
 const deleteBlog = async (id: number) => {
     const result = await prisma.blog.delete({
         where: {
