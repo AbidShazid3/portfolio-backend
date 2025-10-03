@@ -10,15 +10,15 @@ export const authMiddleware = (...authRoles: string[]) => async (req: Request, r
             throw new AppError(403, "No token received")
         }
 
-        const verifiedToken = jwt.verify(accessToken, process.env.JWT_ACCESS_SECRET as string ) as JwtPayload
+        const verifiedToken = jwt.verify(accessToken, process.env.JWT_ACCESS_SECRET as string) as JwtPayload
 
         const isUserExist = await prisma.user.findUnique({
             where: {
-                email: accessToken.email
+                email: verifiedToken.email
             }
         })
         if (!isUserExist) {
-            throw new AppError(400, 'Not valid email')
+            throw new AppError(400, 'User Not found')
         }
 
         if (!authRoles.includes(verifiedToken.role)) {

@@ -12,7 +12,7 @@ const createExperience = async (payload: CreateExperienceDTO): Promise<Experienc
     const experience = await prisma.experience.create({
         data: {
             ...payload,
-            aboutMeId: Number(aboutMe.id)
+            aboutMeId: aboutMe.id
         }
     });
     return experience;
