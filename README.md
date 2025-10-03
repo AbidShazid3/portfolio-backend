@@ -60,23 +60,72 @@ It provides secure authentication, blog management, project management, and serv
 
 ## 📂 Project Structure
 ```bash
-backend/
+📂 backend/
 ├─ src/
-│ ├─ config/ # Database config, env config
-│ ├─ error/ # AppError class & global error handler
-│ ├─ generated/ # Prisma client (auto-generated)
-│ ├─ middlewares/ # Auth middleware, error handling
-│ ├─ modules/ # Feature-wise modules
-│ │ ├─ auth/ # login, logout, auth services
-│ │ ├─ blog/ # blog controller, service, routes
-│ │ └─ project/ # project controller, service, routes
-│ ├─ types/ # Custom type definitions (e.g., req.user)
-│ ├─ utils/ # catchAsync, sendResponse helpers
-│ ├─ app.ts # Express app configuration
-│ └─ server.ts # Server entry point
+│  ├─ config/                  # Configuration files
+│  │  ├─ db.ts                 # Prisma client & DB connection
+│  │  └─ env.ts                # Environment variables loader
+│  │
+│  ├─ error/                   # Custom error handling
+│  │  ├─ AppError.ts           # Custom AppError class
+│  │  └─ globalErrorHandler.ts # Express error handler
+│  │
+│  ├─ generated/               # Prisma auto-generated client
+│  │  └─ client/               # Auto-generated files
+│  │
+│  ├─ middlewares/             # Express middlewares
+│  │  ├─ authMiddleware.ts     # JWT auth & role validation
+│  │  └─ errorMiddleware.ts    # Global error handling middleware
+│  │
+│  ├─ modules/                 # Feature-based modules
+│  │  ├─ auth/
+│  │  │  ├─ auth.controller.ts
+│  │  │  ├─ auth.service.ts
+│  │  │  └─ auth.routes.ts
+│  │  │
+│  │  ├─ blog/
+│  │  │  ├─ blog.controller.ts
+│  │  │  ├─ blog.service.ts
+│  │  │  └─ blog.routes.ts
+│  │  │
+│  │  ├─ project/
+│  │  │  ├─ project.controller.ts
+│  │  │  ├─ project.service.ts
+│  │  │  └─ project.routes.ts
+│  │  │
+│  │  ├─ about/
+│  │  │  ├─ about.controller.ts
+│  │  │  ├─ about.service.ts
+│  │  │  └─ about.routes.ts
+│  │  │
+│  │  ├─ experience/
+│  │  │  ├─ experience.controller.ts
+│  │  │  ├─ experience.service.ts
+│  │  │  └─ experience.routes.ts
+│  │  │
+│  │  └─ skills/
+│  │     ├─ skill.controller.ts
+│  │     ├─ skill.service.ts
+│  │     └─ skill.routes.ts
+│  │
+│  ├─ types/                   # Custom TypeScript types
+│  │  └─ express.d.ts          # e.g., extended Request type with user
+│  │
+│  ├─ utils/                   # Utility functions
+│  │  ├─ catchAsync.ts         # Async wrapper for controllers
+│  │  ├─ sendResponse.ts       # Standardized API response
+│  │  └─ seedAdmin.ts
+│  │
+│  ├─ app.ts                   # Express app configuration
+│  └─ server.ts                # Entry point to start server
+│
 ├─ prisma/
-│ └─ schema.prisma # Prisma schema
-└─ package.json
+│  └─ schema.prisma            # Prisma schema for models
+│
+├─ .env                        # Environment variables
+├─ package.json
+├─ tsconfig.json               # TypeScript configuration
+└─ README.md
 ```
 
 ---
