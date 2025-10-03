@@ -7,6 +7,8 @@ import { AuthRoutes } from "./modules/auth/auth.routes";
 import { BlogRoutes } from "./modules/blog/blog.routes";
 import { ProjectRoutes } from "./modules/project/project.routes";
 import { AboutRoutes } from "./modules/about/about.routes";
+import { ExperienceRoutes } from "./modules/experience/experience.routes";
+import { SkillRoutes } from "./modules/skill/skill.routes";
 
 const app = express();
 
@@ -27,6 +29,8 @@ app.use("/api/v1/auth", AuthRoutes);
 app.use("/api/v1/blog", BlogRoutes);
 app.use("/api/v1/project", ProjectRoutes);
 app.use("/api/v1/about", AboutRoutes);
+app.use("/api/v1/experience", ExperienceRoutes);
+app.use("/api/v1/skill", SkillRoutes);
 
 // Default route for testing
 app.get("/", (req: Request, res: Response) => {

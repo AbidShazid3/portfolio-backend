@@ -13,4 +13,4 @@ router.post("/", authMiddleware(Role.ADMIN), ExperienceControllers.createExperie
 router.put("/:id", authMiddleware(Role.ADMIN), ExperienceControllers.updateExperience);
 router.delete("/:id", authMiddleware(Role.ADMIN), ExperienceControllers.deleteExperience);
 
-export const AboutRoutes = router;
+export const ExperienceRoutes = router;
