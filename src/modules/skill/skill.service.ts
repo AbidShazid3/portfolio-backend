@@ -21,7 +21,8 @@ const createSkillCategory = async (payload: Prisma.SkillCategoryCreateInput): Pr
 
 const getAllSkillCategories = async () => {
     const allCategories = await prisma.skillCategory.findMany({
-        include: { skills: true }
+        include: { skills: true },
+        orderBy: {createdAt: 'asc'}
     });
     return allCategories;
 };
@@ -69,6 +70,7 @@ const getAllSkill = async () => {
     const allSkill = await prisma.skill.findMany({
         include: { category: true }
     })
+    return allSkill;
 }
 
 const updateSkill = async (id: number, payload: Partial<Skill>) => {
