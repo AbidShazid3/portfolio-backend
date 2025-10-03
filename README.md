@@ -7,33 +7,40 @@ It provides secure authentication, blog management, project management, and serv
 ---
 
 ## ✨ Features
-- 🔐 **Authentication & Authorization**
-  - JWT-based login/logout for Admin (Portfolio Owner)
-  - Passwords securely hashed with **bcrypt**
-  - Auth middleware for route protection
 
-- 📝 **Blog Management (Admin)**
-  - Create, Read, Update, Delete (CRUD)
-  - Public APIs for listing blogs and fetching blog details
+### 🔐 Authentication & Authorization
+- JWT-based login/logout for Admin (Portfolio Owner)
+- Passwords securely hashed with **bcrypt**
+- Auth middleware for route protection
+- Role-based access: only Admin can access dashboard APIs
 
-- 💻 **Project Management (Admin)**
-  - CRUD for projects
-  - Public APIs for projects showcase
+### 📝 Blog Management (Admin)
+- CRUD (Create, Read, Update, Delete) for blogs
+- Public APIs to list all blogs & fetch individual blog details
 
-- ⚡ **Error Handling**
-  - Centralized error handler with meaningful messages
+### 💻 Project Management (Admin)
+- CRUD operations for projects
+- Public APIs for project showcase
 
-- 🍪 **Secure Cookies**
-  - `accessToken` stored in HTTP-only cookies
+### 👤 About Me, Experience & Skills
+- **About Me**: CRUD for personal info, title, bio, profile image, resume, etc.
+- **Experience**: CRUD for work experience (role, company, start/end dates, description)
+- **Skill Categories**: Manage categories like Frontend, Backend, Tools, Database, etc.
+- **Skills**: CRUD for skills linked to dynamic categories
 
-- 🛡️ **Role-Based Access**
-  - Only Admin can access dashboard APIs
+### ⚡ Error Handling
+- Centralized error handler with meaningful messages
 
-- 🗄️ **Prisma ORM**
-  - For PostgreSQL or other SQL databases
+### 🍪 Secure Cookies
+- `accessToken` stored in HTTP-only cookies
 
-- 📡 **RESTful APIs**
-  - Ready to connect with any frontend
+### 🗄️ Prisma ORM
+- Schema modeling, relations, and query handling
+- Works with PostgreSQL or other SQL databases
+
+### 📡 RESTful APIs
+- Ready to connect with any frontend
+- Public & private routes organized properly
 
 ---
 
