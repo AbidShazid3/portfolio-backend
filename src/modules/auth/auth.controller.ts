@@ -11,9 +11,7 @@ const login = catchAsync(async (req: Request, res: Response, next: NextFunction)
 
     res.cookie('accessToken', accessToken, {
         httpOnly: true,
-        secure: true,
-        sameSite: "strict",
-        maxAge: 24 * 60 * 60 * 1000,
+        secure: false,
     })
 
     sendResponse(res, {

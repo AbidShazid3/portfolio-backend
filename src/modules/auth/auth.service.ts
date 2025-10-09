@@ -11,7 +11,7 @@ const login = async ( email: string, password: string) => {
     })
 
     if (!user) {
-        throw new AppError(400, "Email not found")
+        throw new AppError(401, "Email not found")
     }
 
     const passwordMatch = await bcrypt.compare(password, user.password)

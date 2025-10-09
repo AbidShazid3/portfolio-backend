@@ -18,7 +18,7 @@ export const authMiddleware = (...authRoles: string[]) => async (req: Request, r
             }
         })
         if (!isUserExist) {
-            throw new AppError(400, 'User Not found')
+            throw new AppError(401, 'User Not found')
         }
 
         if (!authRoles.includes(verifiedToken.role)) {

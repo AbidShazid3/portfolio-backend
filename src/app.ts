@@ -13,17 +13,15 @@ import { SkillRoutes } from "./modules/skill/skill.routes";
 const app = express();
 
 // Middleware
-app.use(cors()); // Enables Cross-Origin Resource Sharing
-app.use(compression()); // Compresses response bodies for faster delivery
-app.use(express.json()); // Parse incoming JSON requests
-
 app.use(
   cors({
     origin: "http://localhost:3000",
     credentials: true,
   })
 );
+app.use(express.json()); // Parse incoming JSON requests
 app.use(cookieParser());
+app.use(compression()); // Compresses response bodies for faster delivery
 
 app.use("/api/v1/auth", AuthRoutes);
 app.use("/api/v1/blog", BlogRoutes);
