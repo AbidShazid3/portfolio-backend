@@ -3,6 +3,8 @@ import { catchAsync } from "../../utils/catchAsync";
 import { AuthServices } from "./auth.service";
 import sendResponse from "../../utils/sendResponse";
 import { userInfo } from "os";
+import { prisma } from "../../config/db";
+import AppError from "../../error/AppError";
 
 const login = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
     const { email, password } = req.body;
@@ -23,7 +25,7 @@ const login = catchAsync(async (req: Request, res: Response, next: NextFunction)
 })
 
 const logout = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
-    res.clearCookie('accessToken',  {
+    res.clearCookie('accessToken', {
         httpOnly: true,
         secure: false,
         sameSite: "lax"
@@ -37,7 +39,27 @@ const logout = catchAsync(async (req: Request, res: Response, next: NextFunction
     })
 })
 
+const getMe = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
+    const decodedUser = req.user as { email: string }
+    const user = await prisma.user.findUnique({
+        where: { email: decodedUser.email },
+        select: { id: true, name: true, email: true, role: true, createdAt: true }
+    })
+
+    if (!user) {
+        throw new AppError(404, 'User Not found')
+    }
+
+    sendResponse(res, {
+        success: true,
+        statusCode: 200,
+        message: 'User fetched successfully',
+        data: user,
+    })
+})
+
 export const AuthControllers = {
     login,
-    logout
+    logout,
+    getMe,
 }
