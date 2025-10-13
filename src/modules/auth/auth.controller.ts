@@ -13,7 +13,8 @@ const login = catchAsync(async (req: Request, res: Response, next: NextFunction)
 
     res.cookie('accessToken', accessToken, {
         httpOnly: true,
-        secure: false,
+        secure: true,
+        sameSite: "none",
     })
 
     sendResponse(res, {
@@ -43,7 +44,7 @@ const getMe = catchAsync(async (req: Request, res: Response, next: NextFunction)
     const decodedUser = req.user as { email: string }
     const user = await prisma.user.findUnique({
         where: { email: decodedUser.email },
-        select: { id: true, name: true, email: true, role: true, createdAt: true }
+        select: { id: true, name: true, email: true, role: true }
     })
 
     if (!user) {
