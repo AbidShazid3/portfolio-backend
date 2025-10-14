@@ -13,18 +13,17 @@ import { SkillRoutes } from "./modules/skill/skill.routes";
 const app = express();
 
 // Middleware
-app.use(
-  cors({
-    origin: [
-      "http://localhost:3000",
-      "https://abid-codes.vercel.app"
-    ],
-    credentials: true,
-  })
-);
 app.use(express.json()); // Parse incoming JSON requests
 app.use(cookieParser());
 app.use(compression()); // Compresses response bodies for faster delivery
+app.use(
+  cors({
+    origin: 
+      "https://abid-codes.vercel.app",
+    credentials: true,
+  })
+);
+
 
 app.use("/api/v1/auth", AuthRoutes);
 app.use("/api/v1/blog", BlogRoutes);

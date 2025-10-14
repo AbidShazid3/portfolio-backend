@@ -21,15 +21,18 @@ const login = catchAsync(async (req: Request, res: Response, next: NextFunction)
         success: true,
         statusCode: 200,
         message: 'Logged in successfully',
-        data: user
+        data: {
+            user,
+            accessToken
+        }
     })
 })
 
 const logout = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
     res.clearCookie('accessToken', {
         httpOnly: true,
-        secure: false,
-        sameSite: "lax"
+        secure: true,
+        sameSite: "none"
     })
 
     sendResponse(res, {

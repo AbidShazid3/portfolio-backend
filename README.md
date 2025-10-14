@@ -6,6 +6,13 @@ It provides secure authentication, blog management, project management, and serv
 
 ---
 
+## 🚀 Live Demo
+
+🔗 **Frontend (Vercel):** [https://abid-codes.vercel.app](https://abid-codes.vercel.app)  
+🔗 **Backend (Vercel):** [https://abid-shadat-noor-portfolio-backend.vercel.app](https://abid-shadat-noor-portfolio-backend.vercel.app)
+
+---
+
 ## ✨ Features
 
 ### 🔐 Authentication & Authorization
